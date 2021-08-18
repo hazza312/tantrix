@@ -66,15 +66,14 @@ if __name__ == '__main__':
         tiles.append(Tile(int(id), colour, edges))
 
     
-    for i in range(3, 30):
-        times = []
+    for i in range(3, 20):
         subset_tiles = tiles[:i]
         start = time()
         board = RingSolver(subset_tiles, tiles[i-1].colour).solve()
-        times.append(time() - start)
+        end = time()
         assert board is not None
         HexagonBoardVisualiser(board).visualise(f"loop_{i}.png")
-        print(i, " ".join([str(t) for t in times]))
+        print(f"Solved loop {i} in {end - start} seconds")
             
             
 
